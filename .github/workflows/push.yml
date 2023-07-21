@@ -7,15 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Git
-        run: |
-          git config user.name LukaGrdinic
-          git config user.email 1lukagrdinic@gmail.com
+        with:
+          token: ${{ secrets.DH_PAT }}
       - uses: actions/setup-node@v3
         with:
           node-version: '18.5.0'
@@ -36,31 +31,20 @@ jobs:
         with:
           name: code-coverage
           path: coverage/libs/ngx-dynamic-headings
-      # Build lib to check if build throws errors
-      - name:  Build ngx-dynamic-headings lib
-        run: npm run build:ngx-dynamic-headings
-      - name: Upload Build Folder
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: ./dist/libs/ngx-dynamic-headings
-      - name: Zip assets
-        run:  | 
-         zip -r build.zip ./dist/libs/ngx-dynamic-headings
-         zip -r coverage.zip coverage/libs/ngx-dynamic-headings
+      - name: Make build.sh executable
+        run: chmod +x build.sh
       - name: Create a Release
         run: npx semantic-release
         env:
           GH_TOKEN: ${{ secrets.DH_PAT }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # TOOD: Build lib with new package.json version of the lib, upload build folder and zip assets, all before getting new semantic release
-      # Build lib with new package.json version of the lib
-      - name:  Build ngx-dynamic-headings lib
-        run: npm run build:ngx-dynamic-headings
-      - name: Publish to npm
-        run: |
-          cd ./dist/libs/ngx-dynamic-headings
-          ls
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+      # - name: Publish to npm
+      #   run: |
+      #     cd ./dist/libs/ngx-dynamic-headings
+      #     ls
+      #     npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
