@@ -22,8 +22,13 @@ export class DynamicHeadingDirective implements AfterContentInit {
     for (let i = 0; i < headingsParentNodes.length; i++) {
       if (headingsParentNodes[i]?.contains(this.elementRef.nativeElement)) {
         if (biggestHeadingLevel === 6) {
+          // keep heading level if h6 level is biggest heading level
           this.resolvedHeadingLevel = `h6`;
+        } else if (headingsParentNodes[i] === this.elementRef.nativeElement.parentNode) {
+          // keep heading level if the element shares parent with biggest heading level
+          this.resolvedHeadingLevel = `h${biggestHeadingLevel}`;
         } else {
+          // increase heading level if the element is descendant of node with biggest heading level
           this.resolvedHeadingLevel = `h${biggestHeadingLevel + 1}`;
         }
         return this.replaceWithResolvedHeading();
