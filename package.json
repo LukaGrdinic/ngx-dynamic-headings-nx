@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nx serve web",
     "test": "nx test ngx-dynamic-headings",
+    "test:dev": "nx test ngx-dynamic-headings -- --watch",
     "build:ngx-dynamic-headings": "nx build ngx-dynamic-headings",
     "prepare": "husky install"
   },
