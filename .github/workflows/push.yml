@@ -41,7 +41,17 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+      - name: Check if directory exists
+        run: |
+          if [ -d ./dist/libs/ngx-dynamic-headings ]; then
+            echo "New lib build directory exists"
+            echo "NEW_LIB_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "New lib build does not exist"
+            echo "NEW_LIB_BUILD=false" >> $GITHUB_ENV
+          fi
       - name: Publish to npm
+        if: ${{ env.NEW_LIB_BUILD == 'true' }}
         run: |
           cd ./dist/libs/ngx-dynamic-headings
           ls
