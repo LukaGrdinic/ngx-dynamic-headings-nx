@@ -25,5 +25,14 @@ import { NgxDynamicHeadingsModule } from 'ngx-dynamic-headings';
 Then use the **<h>** component wherever you want dynamic headings to be generated
 
 ```
-<h>This heading level will be dynamically generated</h>
+<h1>This is the h1 heading</h1>
+
+<div>
+  <h>This will generate an h2 heading at runtime</h>
+  <h>This will generate an h2 heading at runtime</h>
+  <div>
+    <h>This will generate h3 heading at runtime</h>
+    <h>This will generate h3 heading at runtime</h>
+  </div>
+</div>
 ```

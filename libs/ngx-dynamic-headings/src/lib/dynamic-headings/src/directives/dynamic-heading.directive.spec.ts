@@ -45,6 +45,17 @@ class H2Component {}
 })
 class H6Component {}
 
+@Component({
+  template: `
+    <h1>The h1 heading</h1>
+    <div>
+      <h>Test</h>
+      <h>Test</h>
+    </div>
+  `,
+})
+class MultipleDynamicHeadingsComponent {}
+
 describe('DynamicHeadingDirective', () => {
   
   describe('NoHeadingComponent use cases', () => {
@@ -135,6 +146,33 @@ describe('DynamicHeadingDirective', () => {
       expect(h6[1]).toBeInstanceOf(HTMLElement);
       const text = h6[1].innerText;
       expect(text).toBe('Test');
+    });
+  });
+
+  describe('MultipleDynamicHeadingsComponent use cases', () => {
+    let component: MultipleDynamicHeadingsComponent;
+    let fixture: ComponentFixture<MultipleDynamicHeadingsComponent>;
+
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [DynamicHeadingDirective, MultipleDynamicHeadingsComponent],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(MultipleDynamicHeadingsComponent);
+      component = fixture.componentInstance;
+
+      fixture.detectChanges();
+    });
+
+    it('should have 2 h2 headings in template and the both should contain text "Test"', () => {
+      const h2: HTMLElement[] = fixture.nativeElement.querySelectorAll('h2');
+      expect(h2.length).toBe(2);
+      expect(h2[0]).toBeInstanceOf(HTMLElement);
+      expect(h2[1]).toBeInstanceOf(HTMLElement);
+      const textFirstH2 = h2[0].innerText;
+      const textSecondH2 = h2[1].innerText;
+      expect(textFirstH2).toBe('Test');
+      expect(textSecondH2).toBe('Test');
     });
   });
 });
