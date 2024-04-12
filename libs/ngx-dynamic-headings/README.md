@@ -9,9 +9,6 @@ The heading level will be auto-generated based on the previously established pag
 
 Helps build accessible Angular web apps. 
 
-## Demo
-
-
 
 ## Usage
 
