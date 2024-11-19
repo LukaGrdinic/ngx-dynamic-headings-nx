@@ -99,7 +99,13 @@ To test the code in the dev environment,
 
 Any changes you apply in lib code must be built previously with 
 
-`npm run build:ngx-dynamic-headings`
+`npm run build:ngx-dynamic-headings`,
+
+Then change package.json ngx-dynamic-headings dependency:
+
+`"ngx-dynamic-headings": "file:./dist/libs/ngx-dynamic-headings",`
+
+And run `npm install`
 
 ### Documentation
 
