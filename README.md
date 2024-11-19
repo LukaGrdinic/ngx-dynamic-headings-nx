@@ -13,6 +13,7 @@ This monorepo contains the library source code as well as a playground web app t
   - [Reporting Bugs](#reporting-bugs)
   - [Requesting Features](#requesting-features)
   - [Code Contributions](#code-contributions)
+    - [Code Development](#code-development)
   - [Documentation](#documentation)
   - [Testing](#testing)
   - [Pull Requests](#pull-requests)
@@ -89,6 +90,16 @@ If you want to contribute code, follow these steps:
 4. Test your changes thoroughly.
 5. Push your branch to your forked repository.
 6. Open a pull request, describing the changes and linking any related issues.
+
+#### Code Development
+
+To test the code in the dev environment,
+
+`import { NgxDynamicHeadingsModule } from '@ngx-dynamic-headings';`
+
+Any changes you apply in lib code must be built previously with 
+
+`npm run build:ngx-dynamic-headings`
 
 ### Documentation
 
