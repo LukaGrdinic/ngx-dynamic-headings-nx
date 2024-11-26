@@ -1,5 +1,16 @@
 # ngx-dynamic-headings
 
+> **⚠️ This repository hosts the deprecated version 1 of the library!**
+>
+> This version of the library works with Angular 16 and is not being maintained any more.
+> 
+> The new version - version 2 of the library, that works with Angular 18, is now being maintained and you can find it here: [New Repository](https://github.com/LukaGrdinic/ngx-dynamic-headings). 
+>
+> Please consider migrating to the new version to take advantage of the latest features and improvements.
+>
+
+## About this library
+
 ngx-dynamic-headings is a library to help you generate heading levels in your Angular app dynamically, at run-time. This open-source project welcomes contributions from the community to improve and enhance its functionality.
 This monorepo contains the library source code as well as a playground web app to test the lib behaviour.
 
@@ -74,7 +85,7 @@ We welcome contributions from the community. There are several ways you can cont
 
 ### Reporting Bugs
 
-If you encounter any bugs or issues, please search the [GitHub Issues](https://github.com/LukaGrdinic/ngx-dynamic-headings/issues) to check if it has already been reported. If not, open a new issue, describing the problem and steps to reproduce it.
+If you encounter any bugs or issues, please search the [GitHub Issues](https://github.com/LukaGrdinic/ngx-dynamic-headings-nx/issues) to check if it has already been reported. If not, open a new issue, describing the problem and steps to reproduce it.
 
 ### Requesting Features
 
