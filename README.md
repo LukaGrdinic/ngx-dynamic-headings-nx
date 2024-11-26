@@ -85,7 +85,7 @@ We welcome contributions from the community. There are several ways you can cont
 
 ### Reporting Bugs
 
-If you encounter any bugs or issues, please search the [GitHub Issues](https://github.com/LukaGrdinic/ngx-dynamic-headings/issues) to check if it has already been reported. If not, open a new issue, describing the problem and steps to reproduce it.
+If you encounter any bugs or issues, please search the [GitHub Issues](https://github.com/LukaGrdinic/ngx-dynamic-headings-nx/issues) to check if it has already been reported. If not, open a new issue, describing the problem and steps to reproduce it.
 
 ### Requesting Features
 
